@@ -1,0 +1,12 @@
+[general]
+serverName = {{ splunk_forwarder_hostname }}
+{% if splunk_forwarder_pass4symm is defined %}
+pass4SymmKey = {{ splunk_forwarder_pass4symm }}
+{% endif %}
+
+{% if splunk_forwarder_ssl|bool %}
+[sslConfig]
+{% if splunk_forwarder_ssl_pass is defined %}
+sslPassword = {{ splunk_forwarder_ssl_pass }}
+{% endif %}
+{% endif %}

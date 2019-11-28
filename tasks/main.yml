@@ -54,6 +54,14 @@
     backup: yes
   tags: config_copy
 
+- name: Copy server file
+  template:
+    src: server.conf.j2
+    dest: /opt/splunkforwarder/etc/system/local/server.conf
+    backup: yes
+  when: splunk_forwarder_serverconf_create|bool
+  tags: config_copy
+
 - name: Upload Splunk Systemd Script
   copy:
     src: splunk.service

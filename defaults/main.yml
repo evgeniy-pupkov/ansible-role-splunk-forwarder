@@ -16,7 +16,20 @@ splunk_rpm_checksum: "md5:e24b1b431e23ebe583ea37e234390858"
 # These may be removed at some point, but they are placeholders so I don't forget to set them
 splunk_forwarder_indexer: "splunk-indexer:9997"
 splunk_forwarder_index: "default"
+splunk_forwarder_source: "web-server-logs"
 splunk_forwarder_sourcetype: "nginx"
+# If you use token-based security to send logs to splunk-indexer, define this variable
+# NOTE: Hide this variable to vault for more security
+# splunk_forwarder_token:
+
+# For server.conf template
+splunk_forwarder_serverconf_create: no
+splunk_forwarder_hostname: "{{ ansible_host }}"
+# NOTE: Hide this variables to vault for more security
+splunk_forwarder_pass4symm: MyPa$$pass4SymmKey
+splunk_forwarder_ssl: no
+splunk_forwarder_ssl_pass: My$$lPass
+
 
 splunk_forwarder_logs: |
   [monitor:///var/log/nginx/access.log*]

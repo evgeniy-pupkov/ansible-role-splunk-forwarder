@@ -4,5 +4,8 @@ disabled = false
 
 [tcpout:splunk]
 server = {{ splunk_forwarder_indexer }}
+{% if splunk_forwarder_token is defined %}
+token = {{ splunk_forwarder_token }}
+{% endif %}
 
 [tcpout-server://{{ splunk_forwarder_indexer }}]
